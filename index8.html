@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        body {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            background: linear-gradient(to right, #ffcccc, #ff99cc);
+            padding: 20px;
+        }
+        .content, .quiz-container {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .memories-container, .quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+        }
+        .slide {
+            display: none;
+        }
+        .active-slide {
+            display: block;
+        }
+        button {
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover {
+            background-color: #ff3385;
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Happy Valentine's Day My Darling 💖</h1>
+    <button onclick="toggleView('memories')">📸 View Memories</button>
+    <button onclick="toggleView('quiz')">💕 Take the Quiz</button>
+    
+    <div id="memories" class="memories-container active">
+        <div class="slideshow-container">
+            <div class="slide active-slide">
+                <img src="Graduation.PNG" alt="Memory 1" width="80%">
+                <p class="caption">Long ago, you have expressed that your wish during graduation was to be picked up by someone you love. Little did you know that by saying yes to me on March 31st you have already granted me much more joy.</p>
+            </div>
+            <div class="slide">
+                <img src="Tennessee.PNG" alt="Memory 2" width="80%">
+                <p class="caption">Distance wasn't that much of a thing back then, but when I had to go to Tennessee you have kept me the happiest man on earth. Doubling down on your love and care, I was really taken care of emotionally.</p>
+            </div>
+            <div class="slide">
+                <img src="IMG_8128.jpg" alt="Memory 3" width="80%">
+                <p class="caption">Now the years have passed, and I can't help but feel that we are stronger than ever. I wanted to let you know my love on this day and that I will always be proud of you my love. To My One and Only, from Your First and Last. I love you.</p>
+            </div>
+            <button onclick="nextSlide()">➡ Next</button>
+        </div>
+    </div>
+    
+    <div id="quiz" class="quiz-container">
+        <h2>Our Love Quiz 💕</h2>
+        <p>Where did we have our first date?</p>
+        <button onclick="checkAnswer('waffle house')">🥞 Waffle House</button>
+        <button onclick="checkAnswer('parking of the great nooo')">🚗 Parking of the Great Nooo</button>
+        <button onclick="checkAnswer('At your apartment')">🏠 At Your Apartment</button>
+        
+        <p>What sweet treat did I love getting from you?</p>
+        <button onclick="checkAnswer('doughnut')">🍩 Doughnut</button>
+        <button onclick="checkAnswer('apple pie')">🍎 Apple Pie</button>
+        <button onclick="checkAnswer('fruit cake')">🎂 Fruit Cake</button>
+        
+        <p>What anime did we watch (in Pooler) when I came back from Tennessee for the first time?</p>
+        <button onclick="checkAnswer('naruto')">🍥 Naruto</button>
+        <button onclick="checkAnswer('attack on titan')">⚔ Attack on Titan</button>
+        <button onclick="checkAnswer('one piece')">🏴‍☠️ One Piece</button>
+        <button onclick="checkAnswer('death note')">📖 Death Note</button>
+        
+        <p>What was your first nickname in our relationship?</p>
+        <button onclick="checkAnswer('atomic bomb')">💥 Atomic Bomb</button>
+        <button onclick="checkAnswer('baby')">🍼 Baby</button>
+        <button onclick="checkAnswer('darling')">💖 Darling</button>
+        <button onclick="checkAnswer('Baby')">🌸 Your kindness</button>
+        <button onclick="checkAnswer('Darling')">💖 Your kindness</button>
+        
+        <p id="quiz-feedback"></p>
+    </div>
+    
+    <script>
+        function toggleView(view) {
+            document.getElementById('memories').classList.remove('active');
+            document.getElementById('quiz').classList.remove('active');
+            document.getElementById(view).classList.add('active');
+        }
+        
+        let currentSlide = 0;
+        function nextSlide() {
+            let slides = document.getElementsByClassName("slide");
+            slides[currentSlide].classList.remove("active-slide");
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add("active-slide");
+            setTimeout(nextSlide, 25000); // Auto-transition every 4 seconds
+        }
+        setTimeout(nextSlide, 4000);
+        
+        function checkAnswer(answer) {
+            let feedback = document.getElementById("quiz-feedback");
+            let correctAnswers = ['waffle house', 'apple pie', 'naruto', 'everything', 'atomic bomb'];
+            if (correctAnswers.includes(answer)) {
+                feedback.innerText = "Correct! 💖 You're my perfect match!";
+                feedback.style.color = "#ff3385";
+            } else {
+                feedback.innerText = "Oops! Try again. 😊";
+                feedback.style.color = "#ff4d4d";
+            }
+        }
+    </script>
+</body>
+</html>
+
